@@ -26,14 +26,14 @@
 
     if (isset($_POST['submit'])) {
       # Some infusionsoft fields
-      $formName = $_POST['formName'];
-      $firstName = $_POST['firstName'];
-      $lastName = $_POST['lastName'];
-      $emailAddress = $_POST['emailAddress'];
-      $phoneNumber = $_POST['phoneNumber'];
-      $companyName = $_POST['companyName'];
-      $wantFreeConsultation = $_POST['wantFreeConsultation'];
-      $wantFreeDemo = $_POST['wantFreeDemo'];
+      $formName = sanitize_text_field($_POST['formName']);
+      $firstName = sanitize_text_field($_POST['firstName']);
+      $lastName = sanitize_text_field($_POST['lastName']);
+      $emailAddress = sanitize_text_field($_POST['emailAddress']);
+      $phoneNumber = sanitize_text_field($_POST['phoneNumber']);
+      $companyName = sanitize_text_field($_POST['companyName']);
+      $wantFreeConsultation = sanitize_text_field($_POST['wantFreeConsultation']);
+      $wantFreeDemo = sanitize_textarea_field($_POST['wantFreeDemo']);
 
       echo "$formName";
       echo "$firstName";
