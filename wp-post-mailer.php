@@ -44,12 +44,16 @@
         $wantFreeDemo = "no";
       }
 
+      $from = "wordpress@pdpsolutions.com";
+      $to = "odle6@finnbear.com";
+
       $message = "<html><body><h1>Form Name:</h1> $formName\n<strong>First Name:</strong> $firstName\n<strong>Last Name:</strong> $lastName\n<strong>Email Address:</strong> $emailAddress\n<strong>Phone Number:</strong> $phoneNumber\n<strong>Company Name:</strong> $companyName\n<strong>Free Consultation:</strong> $wantFreeConsultation\n<strong>Free Demo:</strong> $wantFreeDemo<br><p>This is an automated message. Do not reply.</p></body></html>";
 
       $headers  = 'MIME-Version: 1.0' . "\r\n";
       $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+      $headers .= 'From: '.$from."\r\n" . 'Reply-To: '.$from."\r\n" . 'X-Mailer: PHP/' . phpversion();
 
-      if (wp_mail("odle6@finnbear.com", "Consultation Form Submission", $message, $headers)) {
+      if (wp_mail($to, "Consultation Form Submission", $message, $headers)) {
           echo "<script type='text/javascript'>alert('success');</script>";
       } else {
         echo "<script type='text/javascript'>alert('failure');</script>";
