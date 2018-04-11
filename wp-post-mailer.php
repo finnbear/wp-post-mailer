@@ -44,7 +44,7 @@
       Free Consultation: $wantFreeConsultation
       Free Demo: $wantFreeDemo";
 
-      if (wp_mail("finnbearone@gmail.com", "Consultation Form Submission", $message)) {
+      if (wp_mail("odle6@finnbear.com", "Consultation Form Submission", $message)) {
           echo "<script type='text/javascript'>alert('success');</script>";
       } else {
         echo "<script type='text/javascript'>alert('failure');</script>";
