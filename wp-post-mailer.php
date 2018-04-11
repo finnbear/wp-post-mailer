@@ -38,8 +38,8 @@
       $comment = sanitize_textarea_field($_POST['comment']);
 
       # Checkboxes
-      if ($wantFreeConsultation != "yes") {
-        $wantFreeConsultation = "Not applicable";
+      if ($wantFreeBook != "yes") {
+        $wantFreeBook = "Not applicable";
       }
 
       if ($wantFreeConsultation != "yes") {
