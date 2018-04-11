@@ -25,7 +25,24 @@
     ob_start();
 
     if (isset($_POST['submit'])) {
-      echo "<p>Recieved.</p>";
+      # Some infusionsoft fields
+      $formName = $_POST['formName'];
+      $firstName = $_POST['firstName'];
+      $lastName = $_POST['lastName'];
+      $emailAddress = $_POST['emailAddress'];
+      $phoneNumber = $_POST['phoneNumber'];
+      $companyName = $_POST['companyName'];
+      $wantFreeConsultation = $_POST['wantFreeConsultation'];
+      $wantFreeDemo = $_POST['wantFreeDemo'];
+
+      echo "$formName";
+      echo "$firstName";
+      echo "$lastName";
+      echo "$emailAddress";
+      echo "$phoneNumber";
+      echo "$companyName";
+      echo "$wantFreeConsultation";
+      echo "$wantFreeDemo";
     }
 
     return ob_get_clean();
