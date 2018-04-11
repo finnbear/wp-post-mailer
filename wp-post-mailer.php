@@ -32,7 +32,7 @@
    }
 
    register_activation_hook(__FILE__, 'post_mailer_activate')
-   register_deactivation_hook(__FILE__, 'post_mailer_activate')
+   register_deactivation_hook(__FILE__, 'post_mailer_deactivate')
    register_uninstall_hook(__FILE__, 'post_mailer_uninstall')
 
    add_shortcode('post_mailer_form', 'post_mailer_form_shortcode')
