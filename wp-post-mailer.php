@@ -42,7 +42,7 @@
       Phone Number: $phoneNumber
       Company Name: $companyName
       Free Consultation: $wantFreeConsultation
-      Free Demo: $wantFreeDemo"
+      Free Demo: $wantFreeDemo";
 
       if (wp_mail("finnbearone@gmail.com", "Consultation Form Submission", $message)) {
           echo "<script type='text/javascript'>alert('success');</script>";
