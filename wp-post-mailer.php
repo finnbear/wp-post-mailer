@@ -44,14 +44,7 @@
         $wantFreeDemo = "no";
       }
 
-      $message = "Form Name: $formName
-      First Name: $firstName
-      Last Name: $lastName
-      Email Address: $emailAddress
-      Phone Number: $phoneNumber
-      Company Name: $companyName
-      Free Consultation: $wantFreeConsultation
-      Free Demo: $wantFreeDemo";
+      $message = "<html><body><h1>Form Name:</h1> $formName\n<strong>First Name:</strong> $firstName\n<strong>Last Name:</strong> $lastName\n<strong>Email Address:</strong> $emailAddress\n<strong>Phone Number:</strong> $phoneNumber\n<strong>Company Name:</strong> $companyName\n<strong>Free Consultation:</strong> $wantFreeConsultation\n<strong>Free Demo:</strong> $wantFreeDemo<br><p>This is an automated message. Do not reply.</p></body></html>";
 
       if (wp_mail("odle6@finnbear.com", "Consultation Form Submission", $message)) {
           echo "<script type='text/javascript'>alert('success');</script>";
