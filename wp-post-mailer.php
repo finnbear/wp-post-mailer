@@ -47,16 +47,14 @@
       $from = "wordpress@pdpsolutions.com";
       $to = "odle6@finnbear.com";
 
-      $message = "<html><body><h1>$formName</h1><p><strong>First Name:</strong> $firstName</p><p><strong>Last Name:</strong> $lastName</p><p><strong>Email Address:</strong> $emailAddress\n<strong>Phone Number:</strong> $phoneNumber</p><p><strong>Company Name:</strong> $companyName</p><p><strong>Free Consultation:</strong> $wantFreeConsultation</p><p><strong>Free Demo:</strong> $wantFreeDemo</p><br><p>This is an automated message. Do not reply.</p></body></html>";
+      $message = "<html><body><h1>$formName</h1><p><strong>First Name:</strong> $firstName</p><p><strong>Last Name:</strong> $lastName</p><p><strong>Email Address:</strong> $emailAddress</p><p><strong>Phone Number:</strong> $phoneNumber</p><p><strong>Company Name:</strong> $companyName</p><p><strong>Free Consultation:</strong> $wantFreeConsultation</p><p><strong>Free Demo:</strong> $wantFreeDemo</p><br><p>This is an automated message. Do not reply.</p></body></html>";
 
       $headers  = 'MIME-Version: 1.0' . "\r\n";
       $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
       $headers .= 'From: '.$from."\r\n" . 'Reply-To: '.$from."\r\n" . 'X-Mailer: PHP/' . phpversion();
 
-      if (wp_mail($to, "Consultation Form Submission", $message, $headers)) {
-          echo "<script type='text/javascript'>alert('success');</script>";
-      } else {
-        echo "<script type='text/javascript'>alert('failure');</script>";
+      if (!wp_mail($to, "Consultation Form Submission", $message, $headers)) {
+        echo "<script type='text/javascript'>alert('Error, please try again later.');</script>";
       }
     }
 
