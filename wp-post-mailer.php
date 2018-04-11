@@ -35,6 +35,15 @@
       $wantFreeConsultation = sanitize_text_field($_POST['wantFreeConsultation']);
       $wantFreeDemo = sanitize_textarea_field($_POST['wantFreeDemo']);
 
+      # Checkboxes
+      if ($wantFreeConsultation != "yes") {
+        $wantFreeConsultation = "no";
+      }
+
+      if ($wantFreeDemo != "yes") {
+        $wantFreeDemo = "no";
+      }
+
       $message = "Form Name: $formName
       First Name: $firstName
       Last Name: $lastName
