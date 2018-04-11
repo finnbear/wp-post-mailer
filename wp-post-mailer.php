@@ -24,8 +24,8 @@
    function post_mailer_form_shortcode() {
     ob_start();
 
-    if ( isset( $_POST['submit'] ) ) {
-      <p>Post received.</p>
+    if (isset($_POST['submit'])) {
+      echo "<p>Recieved.</p>";
     }
 
     return ob_get_clean();
