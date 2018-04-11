@@ -32,11 +32,16 @@
       $emailAddress = sanitize_text_field($_POST['emailAddress']);
       $phoneNumber = sanitize_text_field($_POST['phoneNumber']);
       $companyName = sanitize_text_field($_POST['companyName']);
+      $wantFreeBook = sanitize_text_field($_POST['wantFreeBook']);
       $wantFreeConsultation = sanitize_text_field($_POST['wantFreeConsultation']);
       $wantFreeDemo = sanitize_text_field($_POST['wantFreeDemo']);
       $comment = sanitize_textarea_field($_POST['comment']);
 
       # Checkboxes
+      if ($wantFreeConsultation != "yes") {
+        $wantFreeConsultation = "Not applicable";
+      }
+
       if ($wantFreeConsultation != "yes") {
         $wantFreeConsultation = "no";
       }
@@ -48,7 +53,7 @@
       $from = "wordpress@pdpsolutions.com";
       $to = POST_MAILER_EMAIL;
 
-      $message = "<html><body><h1>$formName</h1><p><strong>First Name:</strong> $firstName</p><p><strong>Last Name:</strong> $lastName</p><p><strong>Email Address:</strong> $emailAddress</p><p><strong>Phone Number:</strong> $phoneNumber</p><p><strong>Company Name:</strong> $companyName</p><p><strong>Free Consultation:</strong> $wantFreeConsultation</p><p><strong>Free Demo:</strong> $wantFreeDemo</p><p><strong>Comment:</strong> $comment</p><br><p>This is an automated message. Do not reply.</p></body></html>";
+      $message = "<html><body><h1>$formName</h1><p><strong>First Name:</strong> $firstName</p><p><strong>Last Name:</strong> $lastName</p><p><strong>Email Address:</strong> $emailAddress</p><p><strong>Phone Number:</strong> $phoneNumber</p><p><strong>Company Name:</strong> $companyName</p><p><strong>Free eBook:</strong> $wantFreeBook</p><p><strong>Free Consultation:</strong> $wantFreeConsultation</p><p><strong>Free Demo:</strong> $wantFreeDemo</p><p><strong>Comment:</strong> $comment</p><br><p>This is an automated message. Do not reply.</p></body></html>";
 
       $headers  = 'MIME-Version: 1.0' . "\r\n";
       $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
