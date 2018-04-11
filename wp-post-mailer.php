@@ -39,7 +39,7 @@
 
       # Checkboxes
       if ($wantFreeBook != "yes") {
-        $wantFreeBook = "Not applicable";
+        $wantFreeBook = "no / not applicable";
       }
 
       if ($wantFreeConsultation != "yes") {
