@@ -35,14 +35,20 @@
       $wantFreeConsultation = sanitize_text_field($_POST['wantFreeConsultation']);
       $wantFreeDemo = sanitize_textarea_field($_POST['wantFreeDemo']);
 
-      echo "$formName";
-      echo "$firstName";
-      echo "$lastName";
-      echo "$emailAddress";
-      echo "$phoneNumber";
-      echo "$companyName";
-      echo "$wantFreeConsultation";
-      echo "$wantFreeDemo";
+      $message = "Form Name: $formName
+      First Name: $firstName
+      Last Name: $lastName
+      Email Address: $emailAddress
+      Phone Number: $phoneNumber
+      Company Name: $companyName
+      Free Consultation: $wantFreeConsultation
+      Free Demo: $wantFreeDemo"
+
+      if (wp_mail("finnbearone@gmail.com", "Consultation Form Submission", $message)) {
+          echo "<script type='text/javascript'>alert('success');</script>";
+      } else {
+        echo "<script type='text/javascript'>alert('failure');</script>";
+      }
     }
 
     return ob_get_clean();
