@@ -43,11 +43,11 @@
       }
 
       if ($wantFreeConsultation != "yes") {
-        $wantFreeConsultation = "no";
+        $wantFreeConsultation = "no / not applicable";
       }
 
       if ($wantFreeDemo != "yes") {
-        $wantFreeDemo = "no";
+        $wantFreeDemo = "no / not applicable";
       }
 
       $from = "wordpress@pdpsolutions.com";
