@@ -28,30 +28,38 @@
       # Some infusionsoft fields
       $formName = sanitize_text_field($_POST['formName']);
       $firstName = sanitize_text_field($_POST['firstName']);
+      $lastName = sanitize_text_field($_POST['lastName']);
+      $emailAddress = sanitize_text_field($_POST['emailAddress']);
+      $phoneNumber = sanitize_text_field($_POST['phoneNumber']);
+      $companyName = sanitize_text_field($_POST['companyName']);
+      $wantFreeBook = sanitize_text_field($_POST['wantFreeBook']);
+      $wantFreeConsultation = sanitize_text_field($_POST['wantFreeConsultation']);
+      $wantFreeDemo = sanitize_text_field($_POST['wantFreeDemo']);
+      $comment = sanitize_textarea_field($_POST['comment']);
 
-      if (preg_match_all("/[0-9]/", $firstName) <= 1) {
-        $lastName = sanitize_text_field($_POST['lastName']);
-        $emailAddress = sanitize_text_field($_POST['emailAddress']);
-        $phoneNumber = sanitize_text_field($_POST['phoneNumber']);
-        $companyName = sanitize_text_field($_POST['companyName']);
-        $wantFreeBook = sanitize_text_field($_POST['wantFreeBook']);
-        $wantFreeConsultation = sanitize_text_field($_POST['wantFreeConsultation']);
-        $wantFreeDemo = sanitize_text_field($_POST['wantFreeDemo']);
-        $comment = sanitize_textarea_field($_POST['comment']);
+      # Checkboxes
+      $wants = 0;
 
-        # Checkboxes
-        if ($wantFreeBook != "yes") {
-          $wantFreeBook = "no / not applicable";
-        }
+      if ($wantFreeBook != "yes") {
+        $wantFreeBook = "no / not applicable";
+      } else {
+        $wants++;
+      }
 
-        if ($wantFreeConsultation != "yes") {
-          $wantFreeConsultation = "no / not applicable";
-        }
+      if ($wantFreeConsultation != "yes") {
+        $wantFreeConsultation = "no / not applicable";
+        $rejections ++;
+      } else {
+        $wants++;
+      }
 
-        if ($wantFreeDemo != "yes") {
-          $wantFreeDemo = "no / not applicable";
-        }
+      if ($wantFreeDemo != "yes") {
+        $wantFreeDemo = "no / not applicable";
+      } else {
+        $wants++;
+      }
 
+      if (preg_match_all("/[0-9]/", $firstName) <= 2 || $wants > 0) {
         $from = "wordpress@pdpsolutions.com";
         $to = POST_MAILER_EMAIL;
 
