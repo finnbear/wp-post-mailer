@@ -28,39 +28,42 @@
       # Some infusionsoft fields
       $formName = sanitize_text_field($_POST['formName']);
       $firstName = sanitize_text_field($_POST['firstName']);
-      $lastName = sanitize_text_field($_POST['lastName']);
-      $emailAddress = sanitize_text_field($_POST['emailAddress']);
-      $phoneNumber = sanitize_text_field($_POST['phoneNumber']);
-      $companyName = sanitize_text_field($_POST['companyName']);
-      $wantFreeBook = sanitize_text_field($_POST['wantFreeBook']);
-      $wantFreeConsultation = sanitize_text_field($_POST['wantFreeConsultation']);
-      $wantFreeDemo = sanitize_text_field($_POST['wantFreeDemo']);
-      $comment = sanitize_textarea_field($_POST['comment']);
 
-      # Checkboxes
-      if ($wantFreeBook != "yes") {
-        $wantFreeBook = "no / not applicable";
-      }
+      if (preg_match_all("/[0-9]/", $firstName) <= 1) {
+        $lastName = sanitize_text_field($_POST['lastName']);
+        $emailAddress = sanitize_text_field($_POST['emailAddress']);
+        $phoneNumber = sanitize_text_field($_POST['phoneNumber']);
+        $companyName = sanitize_text_field($_POST['companyName']);
+        $wantFreeBook = sanitize_text_field($_POST['wantFreeBook']);
+        $wantFreeConsultation = sanitize_text_field($_POST['wantFreeConsultation']);
+        $wantFreeDemo = sanitize_text_field($_POST['wantFreeDemo']);
+        $comment = sanitize_textarea_field($_POST['comment']);
 
-      if ($wantFreeConsultation != "yes") {
-        $wantFreeConsultation = "no / not applicable";
-      }
+        # Checkboxes
+        if ($wantFreeBook != "yes") {
+          $wantFreeBook = "no / not applicable";
+        }
 
-      if ($wantFreeDemo != "yes") {
-        $wantFreeDemo = "no / not applicable";
-      }
+        if ($wantFreeConsultation != "yes") {
+          $wantFreeConsultation = "no / not applicable";
+        }
 
-      $from = "wordpress@pdpsolutions.com";
-      $to = POST_MAILER_EMAIL;
+        if ($wantFreeDemo != "yes") {
+          $wantFreeDemo = "no / not applicable";
+        }
 
-      $message = "<html><body><h1>$formName</h1><p><strong>First Name:</strong> $firstName</p><p><strong>Last Name:</strong> $lastName</p><p><strong>Email Address:</strong> $emailAddress</p><p><strong>Phone Number:</strong> $phoneNumber</p><p><strong>Company Name:</strong> $companyName</p><p><strong>Free eBook:</strong> $wantFreeBook</p><p><strong>Free Consultation:</strong> $wantFreeConsultation</p><p><strong>Free Demo:</strong> $wantFreeDemo</p><p><strong>Comment:</strong> $comment</p><br><p>This is an automated message. Do not reply.</p></body></html>";
+        $from = "wordpress@pdpsolutions.com";
+        $to = POST_MAILER_EMAIL;
 
-      $headers  = 'MIME-Version: 1.0' . "\r\n";
-      $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-      $headers .= 'From: '.$from."\r\n" . 'Reply-To: '.$from."\r\n" . 'X-Mailer: PHP/' . phpversion();
+        $message = "<html><body><h1>$formName</h1><p><strong>First Name:</strong> $firstName</p><p><strong>Last Name:</strong> $lastName</p><p><strong>Email Address:</strong> $emailAddress</p><p><strong>Phone Number:</strong> $phoneNumber</p><p><strong>Company Name:</strong> $companyName</p><p><strong>Free eBook:</strong> $wantFreeBook</p><p><strong>Free Consultation:</strong> $wantFreeConsultation</p><p><strong>Free Demo:</strong> $wantFreeDemo</p><p><strong>Comment:</strong> $comment</p><br><p>This is an automated message. Do not reply.</p></body></html>";
 
-      if (!wp_mail($to, "Consultation Form Submission", $message, $headers)) {
-        echo "<script type='text/javascript'>alert('Error, please try again later.');</script>";
+        $headers  = 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        $headers .= 'From: '.$from."\r\n" . 'Reply-To: '.$from."\r\n" . 'X-Mailer: PHP/' . phpversion();
+
+        if (!wp_mail($to, "Consultation Form Submission", $message, $headers)) {
+          echo "<script type='text/javascript'>alert('Error, please try again later.');</script>";
+        }
       }
     }
 
